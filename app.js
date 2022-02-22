@@ -6,7 +6,7 @@ function getRandomInt(min, max) {
 }
 
 let randomNumber = [];
-
+const N = [];
 for (let i = 0; i < 5; i++) {
   const N = getRandomInt(1, 100);
   randomNumber.push(N);
@@ -19,6 +19,32 @@ for (let i = 0; i < 5; i++) {
 const remember = [];
 const nUser = [];
 setTimeout(() => {
-  for (let i = 0; )
-}, 1000);
-//Dopo che sono stati inseriti i 5 numeri, il software dice quanti e quali dei numeri da indovinare sono stati individuati.
+  for (let i = 0; nUser.length < 5; i++) {
+    const N = parseInt(
+      prompt('Inserisci i numeri appena visti, uno alla volta!')
+    );
+    if (!nUser.includes(N) && !isNaN(N)) nUser.push(N);
+
+    if (randomNumber.includes(N) && !remember.includes(N) && !isNaN(N)) {
+      remember.push(N);
+      alert('Grande vai avanti!');
+    } else if (remember.includes(N)) {
+      alert('Ma sei ubriaco? :=) Lo hai gia digitato!');
+    } else {
+      alert('Niente da fare amico, non ce la fai proprio!');
+    }
+    console.log(remember, nUser);
+  }
+  //Dopo che sono stati inseriti i 5 numeri, il software dice quanti e quali dei numeri da indovinare sono stati individuati.
+  if (remember.length === 0) {
+    alert(
+      'La tua memoria e scarsa fumma di meno! :=) Non hai ricordato nessun numero'
+    );
+  } else if (remember.length === 1) {
+    alert(`Almeno 1 numero ti sei ricordato bravo! ${remember}`);
+  } else {
+    alert(`I numeri ricordati sono ${remember}`);
+  }
+}, 5000);
+
+console.log(nUser);
